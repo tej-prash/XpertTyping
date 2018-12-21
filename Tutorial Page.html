@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 100%;
+    position:absolute;
+    bottom:0;
+}
+</style>
+</head>
+<body style="background-image:url(bkg6.jpg);color:F0E68C">
+<audio  autoplay loop>
+  <source src="keyboard2.wav" type="audio/mp3">
+</audio>
+<img style="bottom:100" id=img1 src="logo1.png"></img>
+<p align="center" style="font-size:500%;color:white;font-style: oblique;text-decoration:underline"></p>
+<script>
+counter=0;
+var arr=["x.png","p.png","e.png","r.png","t.png"]
+function change()
+{
+var im=document.querySelector("img");
+var p=document.querySelector("p");
+if(counter<10)
+{
+if(counter==0)
+{
+var x=document.createElement("span");
+x.textContent="X";
+x.fontSize=1500+'px'
+p.appendChild(x);
+}
+im.setAttribute("src",arr[0]);
+}
+else if(counter>10 && counter<20)
+{
+if(counter==11)
+{
+var pe=document.createElement("span");
+pe.textContent="p";
+p.appendChild(pe);
+}
+im.setAttribute("src",arr[1]);
+}
+else if(counter>20 && counter<30)
+{
+if(counter==21)
+{
+var pe=document.createElement("span");
+pe.textContent="e";
+p.appendChild(pe);
+}
+im.setAttribute("src",arr[2]);
+}
+else if(counter>30 && counter<40)
+{
+if(counter==31)
+{
+var pe=document.createElement("span");
+pe.textContent="r";
+p.appendChild(pe);
+}
+im.setAttribute("src",arr[3]);
+}
+else if(counter>40 && counter<50)
+{
+if(counter==41)
+{
+var pe=document.createElement("span");
+pe.textContent="t";
+p.appendChild(pe);
+}
+im.setAttribute("src",arr[4]);
+}
+counter++;
+if(counter>51 && counter<53)
+{
+var au=document.querySelector("audio");
+au.setAttribute("src","");
+var pe=document.createElement("span");
+pe.textContent=" Typing";
+p.appendChild(pe);
+clearInterval(end);
+window.location.href="intro.html";
+
+}
+}
+var end=setInterval("change()",90);
+</script>
+</body>

@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script>
+i=0;
+counter=0
+function type(event)
+{
+if(counter<11)
+{
+var a="";
+var ar=a.split("");
+var x = event.keyCode;
+var di=document.querySelector("div");
+var y=String.fromCharCode(x);
+if(ar[i]==y)
+{
+di.append(y);
+i++;
+}
+else
+{
+counter++;
+}
+if(counter==10)
+alert("Game Over");
+}
+}
+</script>
+</head>
+<body onkeyup="type(event)">
+<div>
+</div>
+<p>
+</p>
+</body>
+</html>

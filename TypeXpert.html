@@ -1,0 +1,24 @@
+ <!DOCTYPE HTML>
+<html>
+<head>
+<script>
+var a=["a","b","c","d"];
+for(var i=0;i<a.length;i++)
+{
+document.writeln("<style>");
+document.writeln("div{position:relative;width:15px;height:15px;background-color:red;}");
+document.writeln(".div-1{position:relative;width:10px;height:10px;background-color:red;}");
+document.writeln("</style>");
+document.writeln("<div>"+a[i]+"</div>");
+alert(a[i]);
+document.writeln("<style>");
+document.writeln("div{position:relative;width:15px;height:15px;background-color:white;}");
+document.writeln("</style>");
+//document.writeln("<div class=\"div-1\">"+a[i+1]+"</div>");
+
+}
+</script>
+</head>
+<body>
+</body>
+</html>

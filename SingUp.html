@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script>
+countMin=0;
+countSec=0;
+function counter()
+{
+if(countSec<61)
+{
+countSec++;
+}
+else
+{
+countMin=countMin+1;
+countSec=0;
+}
+}
+
+function cal()
+{
+end=setInterval("counter()",1000);
+}
+
+function ed()
+{
+clearInterval(end);
+alert(countMin+":"+countSec);
+}
+
+</script>
+</head>
+<body>
+<div class="input">
+First Name<input type="text"  onclick="cal()"></input></br>
+</div>
+<div class="input">
+Last Name<input type="text"></input></br>
+</div>
+<div class="input">
+Email<input type="email"></br>
+</div>
+<div class="input">
+Password<input type="password"></br>
+</div>
+<div class="input">
+Confirm Password<input type="password"></br>
+</div>
+<div class="input">
+Age<input type="number"></br>
+</div>
+<div class="input">
+Have you heard of touch typing<input type="radio" value="YES" name="Y"> &nbsp 
+<input type="radio" value="NO" name="Y">
+</div>
+<div class="input">
+<input type="button" value="END" onclick="ed()"></br>
+</div>
+</body>
+</html>

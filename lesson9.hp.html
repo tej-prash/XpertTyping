@@ -1,0 +1,134 @@
+<html>
+<head>
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+	</script>-->
+	<script src="jquery-3.2.1.min.js">
+	</script>
+	<style>
+		span{
+			margin:20px;
+			font-size:30px;
+		}
+		#d1{
+			background-color:#d2f1f7;
+			border:2px solid gray;
+			text-align:center;
+			font-size:40px;
+			width:400px;
+			margin:40px;
+			padding:10px;
+			height:200px;
+			position:absolute;
+			left:33%
+		}
+		#d1 div{
+			margin:10px;
+		}
+	</style>
+	<script>
+	$(document).ready(function(){
+		function next(){
+			window.location.href="lesson9.php?next=Next";
+			<?php
+				if(isset($_GET['next'])){
+					header("Location:lesson10.php");
+				}
+				?>
+		}
+		var timer=0.00;
+		var counter;
+		var count=0;
+		var mistakes=0;
+		var l=String(document.getElementById("one").innerHTML);
+		var line=$("#one"), characters=line.text().split("").map(function(char){
+						if(char!=" ") {return $("<span>" + char +"</span>");}
+						//else if(char=='<br>'){return "<br>"}
+						else{return $("<span>"+"__"+"</span>");}
+		});
+		line.html(characters);
+		function stopWatch(){
+			timer+=1;
+		}
+		$(window).keypress(function(e){
+			if(count==0){
+				counter=window.setInterval(stopWatch,10);
+			}
+			l=l.trim();
+			var keynum=e.which||e.keyCode;
+			if(count<l.length){
+			if(String.fromCharCode(keynum)==l.charAt(count)){
+				characters[count].css("color","#26A65B");
+			}
+			//console.log(l);
+			else{
+			characters[count].css('color','red');
+			mistakes+=1;
+		}
+						count+=1;
+
+	}
+	else{
+		if(count==l.length){
+	clearInterval(counter);
+	timer=timer/100;
+	document.getElementById("d1").getElementsByTagName("div")[0].innerHTML+=Math.floor(count/timer)+"cps";
+	document.getElementById("d1").getElementsByTagName("div")[1].innerHTML+=Math.floor(((count-	mistakes)/count*100))+"%";
+	//$fp=fopen("file.txt","a+");
+	//var text_node=document.createTextNode("Summary"+"Speed: "+timer.toString()+"\n"+"Accuracy: "+(count-mistakes)+"/"+count);
+	//result.appendChild(text_node);
+	//document.body.appendChild(result);
+	count+=1;
+	var ele=document.createElement("button");
+	var text_button=document.createTextNode("Next");
+	ele.appendChild(text_button);
+	document.body.appendChild(ele);
+	ele.addEventListener("click",next);
+	ele.setAttribute("name","next");
+	ele.setAttribute("value","Next");
+}
+}
+	});
+});
+	</script>
+</head>
+<body align="center">
+	<center>
+	<p id="one" style="font-size:40px">/// z /z zz z// 
+/z// nnn b bb nbn 
+bbn bn nbb nbz /zb 
+/nz b/n z nzb </p>
+	<div id="d1">
+		Summary
+		<div id="speed">Speed: </div>
+		<div id="accur"> Accuracy: </div>
+	</div>
+	<script>
+	/*var count=0;
+	function myFunction(e){
+			var l=String(document.getElementById("one").innerHTML);
+			l=l.trim();
+			var keynum;
+			if(window.event){
+				keynum=e.which||e.keyCode;
+				if(String.fromCharCode(keynum)==l.charAt(count)){
+						//alert("Match found"+String.fromCharCode(keynum))
+						document.getElementById("line").innerHTML+=l.charAt(count);
+						document.getElementById("line").style.backgroundColor="green";
+						count+=1;
+
+						return false;
+				}
+				return false;
+				//alert(l.charAt(count));
+				//count++;
+			}
+			
+	}*/
+	</script>
+	<!--<form action="">
+		Start typing here: <textarea id="line" rows="2" cols="50" onkeypress="return myFunction(event)"></textarea>
+	</form>-->
+	</center>
+
+</body>
+</html>
